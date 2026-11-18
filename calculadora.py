@@ -1,18 +1,61 @@
 import tkinter as tk
 
+primeiro_numero = None
+segundo_numero = None
+operacao = None
+
 #Funções
 def limpar():
+    global primeiro_numero, segundo_numero, operacao
+    primeiro_numero = None
+    segundo_numero = None
+    operacao = None
     visor.delete(0, tk.END)
+
 def backspace():
     visor.delete(len(visor.get())-1, tk.END)
-def divisao():
-    num = visor.get()
     
 def somar():
-    n1 = 8
+    global primeiro_numero, segundo_numero, operacao
+    primeiro_numero = float(visor.get())
+    operacao = "soma"
+
+def subtracao():
+    global primeiro_numero, segundo_numero, operacao
+    primeiro_numero = float(visor.get())
+    operacao = "subtracao"
+
+def multiplicacao():
+    global primeiro_numero, segundo_numero, operacao
+    primeiro_numero = float(visor.get())
+    operacao = "multiplicacao"
+
+def divisao():
+    global primeiro_numero, segundo_numero, operacao
+    primeiro_numero = float(visor.get())
+    operacao = "divisao"
+
 def decimal():
     if "." not in visor.get():
         visor.insert(tk.END, ".")
+
+def calcular():
+    global primeiro_numero, segundo_numero, operacao
+    segundo_numero = float(visor.get())
+    resultado = None
+    if operacao == "soma":
+        resultado = primeiro_numero + segundo_numero
+    elif operacao == "subtracao":
+        resultado = primeiro_numero - segundo_numero
+    elif operacao == "multiplicacao":
+        resultado = primeiro_numero * segundo_numero
+    elif operacao == "divisao":
+        if segundo_numero != 0:
+            resultado = primeiro_numero / segundo_numero
+        else:
+            resultado = "Erro"
+    visor.delete(0, tk.END)
+    visor.insert(tk.END, str(resultado))
 
 #Numeros
 
@@ -106,6 +149,7 @@ botao_calcular.grid(row=4, column=3, padx=2, pady=2, rowspan=2, sticky="ns")
 
 botao_decimal = tk.Button(janela, text=".", width=6)
 botao_decimal.grid(row=5, column=2, padx=2, pady=2)
+
 
 
 
