@@ -64,44 +64,38 @@ def decimal():
         else:
             visor.insert(tk.END, ".")
 
-def decimal():
-    if "." not in visor.get():
-        if visor.get() == "":
-            visor.insert(tk.END, "0.")
-        else:
-            visor.insert(tk.END, ".")
-    else:
-        pass
-
 
 def calcular():
     global primeiro_numero, segundo_numero, operacao
-    
+
     try:
         segundo_numero = float(visor.get())
-        
+
         if operacao == "soma":
             resultado = primeiro_numero + segundo_numero
+
         elif operacao == "subtracao":
             resultado = primeiro_numero - segundo_numero
+
         elif operacao == "multiplicacao":
             resultado = primeiro_numero * segundo_numero
+
         elif operacao == "divisao":
             if segundo_numero != 0:
                 resultado = primeiro_numero / segundo_numero
             else:
                 resultado = "Erro"
+
         else:
             return
-        
+
         limpar()
         visor.insert(tk.END, str(resultado))
-        
-    except:
+
+    except (ValueError, TypeError):
         limpar()
         visor.insert(tk.END, "Erro")
         
-
 #Numeros
 
 def digitar_0():
@@ -152,50 +146,50 @@ botao_multiplicacao.grid(row=1, column=3, padx=2, pady=2)
 
 #segunda linha de botões
 
-botao_7 = tk.Button(janela, text="7", width=6, command=lambda: digitar_7())
+botao_7 = tk.Button(janela, text="7", width=6, command=digitar_7)
 botao_7.grid(row=2, column=0, padx=2, pady=2)
 
-botao_8 = tk.Button(janela, text="8", width=6, command=lambda: digitar_8())
+botao_8 = tk.Button(janela, text="8", width=6, command=digitar_8)
 botao_8.grid(row=2, column=1, padx=2, pady=2)
 
-botao_9 = tk.Button(janela, text="9", width=6, command=lambda: digitar_9())
+botao_9 = tk.Button(janela, text="9", width=6, command=digitar_9)
 botao_9.grid(row=2, column=2, padx=2, pady=2)
 
-botao_subtracao = tk.Button(janela, text="-", width=6, command=lambda: subtracao())
+botao_subtracao = tk.Button(janela, text="-", width=6, command=subtracao)
 botao_subtracao.grid(row=2, column=3, padx=2, pady=2)
 
 #terceira linha de botões
 
-botao_4 = tk.Button(janela, text="4", width=6, command=lambda: digitar_4())
+botao_4 = tk.Button(janela, text="4", width=6, command=digitar_4)
 botao_4.grid(row=3, column=0, padx=2, pady=2)
 
-botao_5 = tk.Button(janela, text="5", width=6, command=lambda: digitar_5())
+botao_5 = tk.Button(janela, text="5", width=6, command=digitar_5)
 botao_5.grid(row=3, column=1, padx=2, pady=2)
 
-botao_6 = tk.Button(janela, text="6", width=6, command=lambda: digitar_6())
+botao_6 = tk.Button(janela, text="6", width=6, command=digitar_6)
 botao_6.grid(row=3, column=2, padx=2, pady=2)
 
-botao_soma = tk.Button(janela, text="+", width=6, command=lambda: somar())
+botao_soma = tk.Button(janela, text="+", width=6, command=somar)
 botao_soma.grid(row=3, column=3, padx=2, pady=2)
 
 #quarta linha de botões
 
-botao_1 = tk.Button(janela, text="1", width=6, command=lambda: digitar_1())
+botao_1 = tk.Button(janela, text="1", width=6, command=digitar_1)
 botao_1.grid(row=4, column=0, padx=2, pady=2)
 
-botao_2 = tk.Button(janela, text="2", width=6, command=lambda: digitar_2())
+botao_2 = tk.Button(janela, text="2", width=6, command=digitar_2)
 botao_2.grid(row=4, column=1, padx=2, pady=2)
 
-botao_3 = tk.Button(janela, text="3", width=6, command=lambda: digitar_3())
+botao_3 = tk.Button(janela, text="3", width=6, command=digitar_3)
 botao_3.grid(row=4, column=2, padx=2, pady=2)
 
-botao_0 = tk.Button(janela, text="0", width=6, command=lambda: digitar_0())
+botao_0 = tk.Button(janela, text="0", width=6, command=digitar_0)
 botao_0.grid(row=5, column=0, padx=2, pady=2, columnspan=2, sticky="we")
 
-botao_calcular = tk.Button(janela, text="=", width=6, command=lambda: calcular())
+botao_calcular = tk.Button(janela, text="=", width=6, command=calcular)
 botao_calcular.grid(row=4, column=3, padx=2, pady=2, rowspan=2, sticky="ns")
 
-botao_decimal = tk.Button(janela, text=".", width=6, command=lambda: decimal())
+botao_decimal = tk.Button(janela, text=".", width=6, command=decimal)
 botao_decimal.grid(row=5, column=2, padx=2, pady=2)
 
 janela.mainloop()
