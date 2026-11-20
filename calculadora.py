@@ -8,35 +8,61 @@ operacao = None
 def limpar():
     global primeiro_numero, segundo_numero, operacao
     primeiro_numero = None
+    segundo_numero = None
     operacao = None
     visor.delete(0, tk.END)
 
+
 def backspace():
-    visor.delete(len(visor.get())-1, tk.END)
-    
+    visor.delete(len(visor.get()) - 1, tk.END)
+
+
 def somar():
-    global primeiro_numero, segundo_numero, operacao
-    primeiro_numero = float(visor.get())
-    operacao = "soma"
-    visor.delete(0, tk.END)
+    global primeiro_numero, operacao
+    try:
+        primeiro_numero = float(visor.get())
+        operacao = "soma"
+        visor.delete(0, tk.END)
+    except ValueError:
+        pass
+
 
 def subtracao():
-    global primeiro_numero, segundo_numero, operacao
-    primeiro_numero = float(visor.get())
-    operacao = "subtracao"
-    visor.delete(0, tk.END)
+    global primeiro_numero, operacao
+    try:
+        primeiro_numero = float(visor.get())
+        operacao = "subtracao"
+        visor.delete(0, tk.END)
+    except ValueError:
+        pass
+
 
 def multiplicacao():
-    global primeiro_numero, segundo_numero, operacao
-    primeiro_numero = float(visor.get())
-    operacao = "multiplicacao"
-    visor.delete(0, tk.END)
+    global primeiro_numero, operacao
+    try:
+        primeiro_numero = float(visor.get())
+        operacao = "multiplicacao"
+        visor.delete(0, tk.END)
+    except ValueError:
+        pass
+
 
 def divisao():
-    global primeiro_numero, segundo_numero, operacao
-    primeiro_numero = float(visor.get())
-    operacao = "divisao"
-    visor.delete(0, tk.END)
+    global primeiro_numero, operacao
+    try:
+        primeiro_numero = float(visor.get())
+        operacao = "divisao"
+        visor.delete(0, tk.END)
+    except ValueError:
+        pass
+
+
+def decimal():
+    if "." not in visor.get():
+        if visor.get() == "":
+            visor.insert(tk.END, "0.")
+        else:
+            visor.insert(tk.END, ".")
 
 def decimal():
     if "." not in visor.get():
@@ -50,23 +76,31 @@ def decimal():
 
 def calcular():
     global primeiro_numero, segundo_numero, operacao
-    segundo_numero = float(visor.get())
-    resultado = None
-    if operacao == "soma":
-        resultado = primeiro_numero + segundo_numero
-    elif operacao == "subtracao":
-        resultado = primeiro_numero - segundo_numero
-    elif operacao == "multiplicacao":
-        resultado = primeiro_numero * segundo_numero
-    elif operacao == "divisao":
-        if segundo_numero != 0:
-            resultado = primeiro_numero / segundo_numero
+    
+    try:
+        segundo_numero = float(visor.get())
+        
+        if operacao == "soma":
+            resultado = primeiro_numero + segundo_numero
+        elif operacao == "subtracao":
+            resultado = primeiro_numero - segundo_numero
+        elif operacao == "multiplicacao":
+            resultado = primeiro_numero * segundo_numero
+        elif operacao == "divisao":
+            if segundo_numero != 0:
+                resultado = primeiro_numero / segundo_numero
+            else:
+                resultado = "Erro"
         else:
-            resultado = "Erro"
-
-    limpar()
-    if resultado is not None:
+            return
+        
+        limpar()
         visor.insert(tk.END, str(resultado))
+        
+    except:
+        limpar()
+        visor.insert(tk.END, "Erro")
+        
 
 #Numeros
 
@@ -100,7 +134,7 @@ janela.resizable(False, False)
 
 visor = tk.Entry(janela, width=15, justify="right", font=("Arial", 18))
 visor.grid(row=0, column=0, columnspan=4, padx=5, pady=5, sticky="we")
-visor.bind = ("<Key>", lambda e: "break")
+visor.bind("<Key>", lambda e: "break")
 
 #primeira linha de botões
 
