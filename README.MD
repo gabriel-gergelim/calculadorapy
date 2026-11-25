@@ -1,5 +1,10 @@
 # Calculadora em Python
 
+## Realizado por
+
+- Guilherme Ferreira Angelim
+- Gabriel do Carmo Felipe
+
 ## Sobre o projeto
 
 Este projeto consiste no desenvolvimento de uma calculadora com interface gráfica utilizando a linguagem Python e a biblioteca Tkinter.
@@ -23,11 +28,6 @@ O projeto foi desenvolvido como atividade da disciplina de Desenvolvimento de Si
 
 - Python
 - Tkinter (biblioteca para criação de interfaces gráficas).
-
-## Realizado por
-
-- Guilherme Ferreira Angelim
-- Gabriel do Carmo Felipe
 
 ## Informações
 
