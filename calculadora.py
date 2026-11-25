@@ -94,7 +94,7 @@ def calcular():
             if segundo_numero != 0:
                 resultado = primeiro_numero / segundo_numero
             else:
-                resultado = "Erro"
+                resultado = "Erro divisão por 0"
 
         else:
             return
@@ -110,7 +110,7 @@ def calcular():
 #Janela principal
 
 janela = tk.Tk()
-janela.title("Calculadora de aura")
+janela.title("Calculadora")
 janela.resizable(False, False)
 
 
